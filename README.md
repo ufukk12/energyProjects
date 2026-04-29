@@ -1,4 +1,5 @@
 ELEKTRİKLİ ARAÇLAR İÇİN METANOL BUHAR REFERMASYONU (MSR) TABANLI MENZİL UZATICI SİSTEM TASARIMI VE OPTİMİZASYONU
+    
     Bu proje; elektrikli araçlar için batarya ağırlığını artırmadan menzili teorik olarak 1000 km üzerine çıkaran, Metanol Buhar Reformasyonu (MSR) tabanlı bir Menzil Uzatıcı (Range Extender) sisteminin uçtan uca tasarım sürecini kapsamaktadır. Bu sistemde öncelikle enerji yoğunluğunun maksimum olması için Metanol + İzopropanol karışımının kullanılmasını hedeflemiştim fakat daha sonradan fiyat performans açısından ipanın zarar oluşturduğuna kanaat getirip sadece metanol karışımı ile devam ettim. 
 
     1. SİSTEM MİMARİSİ VE DEPO YAPILANDIRMALARI
