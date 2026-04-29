@@ -21,9 +21,9 @@ ELEKTRİKLİ ARAÇLAR İÇİN METANOL BUHAR REFERMASYONU (MSR) TABANLI MENZİL U
                 - Alternatif bir yöntem olarak "Kısıtlı Optimizasyon Yöntemini" kullandım. Bu yöntemle beraber x değerinin yaklaşık olarak x = 0.677 belirledim. Bununla beraber depo kapasitelerini ve elde edeceğimiz teorik elektrik miktarını aşağıda belirttim 
 
                         |      Depolar     |     Depo Kapasiteleri    |                    
-                        |------------------|--------------------------|          Bununla birlikte teorik olarak 118.9kWh elektrik enerjisi üretebiliriz.
+                        |------------------|--------------------------|         Bununla birlikte teorik olarak 118.9kWh elektrik enerjisi üretebiliriz.
                         |   Yakıt Deposu   |         67.7 L           |
-                        |   Su Deposu      |         37.2 L           |
+                        |   Su Deposu      |        37.24 L           |
 
 
     2. METANOL BUHAR REFORMASYONU (MSR) VE HT-PEM ENTEGRASYONU
@@ -32,16 +32,24 @@ ELEKTRİKLİ ARAÇLAR İÇİN METANOL BUHAR REFERMASYONU (MSR) TABANLI MENZİL U
                A. Soğuk Başlatma Fazı: Sistemin rejim sıcaklığına ulaşması için araçtaki ana bataryadan (55 kWh) kısa süreliğine beslenen bir elektrikli ön ısıtıcı (PTC Heater) kullanılır. Reformer ünitesini 250C dereceye çıkarmak için gereken elektriksel yük yaklaşık 0.4kWh tir. (Toplam batarya kapasitesinin %1'inden az). Sistem hidrojen üretimine başladığında bu elektrik tüketimi sıfırlanır.
                B. Autothermal Rejim ve Bedava Isı Kaynakları: Sistem çalışmaya başladıktan sonra tamamen kendi atık ısısıyla reaksiyonu sürdürür
 
-                   3.1 : Buharlaştırma: HT-PEM yakıt pilinden çıkan 160C - 200C seviyesindeki atık ısı ve batarya soğutma suyundan alınan düşük dereceli ısı, tanktan gelen sıvı metanol-su karışımını buhar fazına geçirmek için kullanılır.
+                   2.1 : Buharlaştırma: HT-PEM yakıt pilinden çıkan 160C - 200C seviyesindeki atık ısı ve batarya soğutma suyundan alınan düşük dereceli ısı, tanktan gelen sıvı metanol-su karışımını buhar fazına geçirmek için kullanılır.
 
-                   3.2 : Reformasyon: Yakıt pilinde tüketilemeyen %15-20 oranındaki artık hidrojen, bir katalitik yakıcıda yakılarak reformerın endotermik reaksiyonu  için gereken 250C derecelik ana termal gücü sağlar.
+                   2.2 : Reformasyon: Yakıt pilinde tüketilemeyen %15-20 oranındaki artık hidrojen, bir katalitik yakıcıda yakılarak reformerın endotermik reaksiyonu  için gereken 250C derecelik ana termal gücü sağlar.
 
-                   3.3 : CO Toleransı: HT-PEM'in 30.000ppm kadar Karbonmonoksit (CO) toleransı sunması sayesinde, ağır ve maliyetli gaz saflaştırma ünitelerine olan ihtiyaç ortadan kalkmış ve termal kütle minimize edilmiştir.
-
+                   2.3 : CO Toleransı: HT-PEM'in 30.000ppm kadar Karbonmonoksit (CO) toleransı sunması sayesinde, ağır ve maliyetli gaz saflaştırma ünitelerine olan ihtiyaç ortadan kalkmış ve termal kütle minimize edilmiştir.
+ 
+ 
 
     3. ENERJİ YÖNETİM SİSTEMİ 
             - Sistemin reformasyon ve hidrojen üretim işlemlerinin karmaşıklığını , batarya sağlığının korunması amacıyla batarya dolum an ve sürelerinin belirlenmesi amacıyla sisteme entegre edilecek kapsamlı bir yönetim sistemi tasarlanacaktır. Bu sistem gerektiğinde sistem sağlığının korunması amacıyla kullanıcıya bakıma gidilmesi bildirimini verecek ve önlemler alacak , gerektiğinde batarya sağığının korunması amacıyla şarj değeri %20 altına inmeye basladığında şarj işlemini başlatacak ve bileşen ömürlerini ciddi ölçüde artıracaktır. Bu enerji yönetim sistemi python tabanlı olacaktır
 
+               
+                 3.1 : Batarya Sağlığı : Batarya sağlığından korunması ve menzil uzatıcı sistemin gerektiğinde kullanılmadı amacıyla şarj işlemi duruma göre kullanıcının da isteği doğrultusunda %20 seviyelerinde başlayacak , %85 Seviyelerinde bitecek. 55kWh batarya ile çalışan bir aracı düşünürsek ve bataryanın kullanılabilir kapasitesini 50kWh olarak kabul edersek %20 seviyelerinde 10kWh elektrik enerjisi kaldığını , %85 seviyelerine çıkabilmesi için 42.5kWh elektrik enerjisi barındırması gerektiğini ve dolayısıyla yakıt piliyle 32.5kWh elektrik enerjisi üretilmesi gerektiğini çıkarabiliriz. EMS sisteminin görevi ise şarj seviyesi %25 seviyelerine geldiğinde ;
                    
+                         - Eğer en yakın şarj istasyonu , 45km ve daha fazla uzaklıkta ise (hızına göre 30km değerine kadar inebilir...) (batarya şarjını %10 - %2) seviyelerine getirecek kadar fazla) yakıt pili sağlığı kısmında anlatacağım kontrolleri devreye sokup uygunsa kullancıya " Yakıt Pili Devreye Giriyor... " şeklinde bilgi vererek yakıt pilini devreye alacak.                   
 
-                   
+                         - Eğer mesafe 45km den daha az ise kullanıcıya " Şarj seviyeniz %20 seviyesinin altına inmek üzere , batarya sağlığı içib dilerseniz en yakın şarj istasyonuna gidebilir ya da yakıt pilini devreye sokabilirsiniz... " uyarısı verecek.
+
+                 
+
+                3.2 : Yakıt ve Su Kontrolü : Yakıt pili devreye gireceği zaman öncelikle yakıt ve su kontrolü yapılır , bataryanın elektrik enerjisi ihtiyacı yukarıdaki hesaplamaaya göre 32.5kWh olarak kabul edersek depoda 18.51L yakıt bulunması gerekir (depoyu tam dolu kabul edersek V@32.5kWh = (67.7 × 32.5)/118.9) ) bu 18,51L yakıta karşılık 10,19L su gerekir ( V@su = (37.24 × 18.51)/67.7 ) bu veriler ışığında 1L yakıt için 0.551L su gerektiğini çıkarabiliriz. 
