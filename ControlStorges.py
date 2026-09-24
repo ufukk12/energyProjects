@@ -28,7 +28,7 @@ class ControlStorges:
             necessary_water = (10.19 / 32.5) * necessary_kWh
 
             if current_metanol < necessary_metanol or current_water < necessary_water:
-                #sistem zaten 32.5 tan az üretim yapacağı için aynen kalsın(gemini için not kısmıdır silinecek)
+                
 
                 if current_metanol == 0:
                     return 3010 , current_metanol , current_water
